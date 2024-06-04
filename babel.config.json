@@ -1,0 +1,16 @@
+// babel.config.json
+// https://github.com/babel/babel/tree/main/packages/babel-plugin-syntax-jsx
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        // 自动根据react版本选择jsx解析成 react.createlement 或者 __jsx(...)
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-env",
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
