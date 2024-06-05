@@ -28,18 +28,12 @@ module.exports = merge(baseConfig, {
     // 路由返回index.html'，避免出现404
     historyApiFallback: true,
     // https://github.com/chimurai/http-proxy-middleware/tree/v2.0.6#http-proxy-middleware-options
+    // https://webpack.js.org/configuration/dev-server/#devserveropen
     proxy: [
       {
-        router: {
-          'integration.localhost:3000': 'http://localhost:8001', // host only
-          'staging.localhost:3000': 'http://localhost:8002', // host only
-          'localhost:3000/api': 'http://localhost:8003', // host + path
-          '/rest': 'http://localhost:8004', // path only
-        },
+        context: ['/api'],
+        target: 'http://localhost:3000',
       },
     ],
-    open: {
-      target: 'http://localhost:3003',
-    },
   },
 });
