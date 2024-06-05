@@ -1,5 +1,7 @@
 // babel.config.json
 // https://github.com/babel/babel/tree/main/packages/babel-plugin-syntax-jsx
+// https://babeljs.io/docs/babel-plugin-transform-react-jsx
+// https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
 {
   "presets": [
     [
