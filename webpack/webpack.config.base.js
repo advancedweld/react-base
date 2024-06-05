@@ -1,17 +1,17 @@
 // webpack.config.base.js
 
-const path = require('path')
-const WebpackBar = require('webpackbar')
-const webpack = require('webpack')
+const path = require('path');
+const WebpackBar = require('webpackbar');
+const webpack = require('webpack');
 // 根据相对路径获取绝对路径
-const resolvePath = (relativePath) => path.resolve(__dirname, relativePath)
+const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
 // HTML模板
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 使用MiniCssExtractPlugin 将css单独打包，替换style-loader
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 基础配置
 const baseConfig = {
   // 入口文件
@@ -50,15 +50,16 @@ const baseConfig = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: {
-              modules: {
-                // for development
-                localIdentName: '[path][name]__[local]',
-                // for production
-                // localIdentName: "[hash:base64]",
-              },
-              importLoaders: 1,
-            },
+            // css文件不需要模块化
+            // options: {
+            //   modules: {
+            //     // for development
+            //     localIdentName: '[path][name]__[local]',
+            //     // for production
+            //     // localIdentName: "[hash:base64]",
+            //   },
+            //   importLoaders: 1,
+            // },
           },
           'postcss-loader',
         ],
@@ -137,7 +138,7 @@ const baseConfig = {
     }),
     // new BundleAnalyzerPlugin(),
   ],
-}
+};
 module.exports = {
   baseConfig,
-}
+};

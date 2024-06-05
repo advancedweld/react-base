@@ -1,7 +1,7 @@
 /*
  * @Author: xiangshangzhi
  * @Date: 2022-07-20 12:42:23
- * @FilePath: \reactProject\webpack\webpack.config.dev.js
+ * @FilePath: \react-base\webpack\webpack.config.dev.js
  */
 // 合并规则
 
@@ -27,11 +27,14 @@ module.exports = merge(baseConfig, {
     open: true,
     // 路由返回index.html'，避免出现404
     historyApiFallback: true,
+    // https://github.com/chimurai/http-proxy-middleware/tree/v2.0.6#http-proxy-middleware-options
     proxy: [
       {
-        '/api-x': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
+        router: {
+          'integration.localhost:3000': 'http://localhost:8001', // host only
+          'staging.localhost:3000': 'http://localhost:8002', // host only
+          'localhost:3000/api': 'http://localhost:8003', // host + path
+          '/rest': 'http://localhost:8004', // path only
         },
       },
     ],
