@@ -11,15 +11,12 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { registerMicroApps, start } from 'qiankun';
-import './assets/style/common.css';
-import './style.less';
+import InnerApp from './App';
+// import './assets/style/common.css';
+// import './style.less';
 
 function App() {
-  return (
-    <div>
-      <h1>hello , react!</h1>
-    </div>
-  );
+  return <InnerApp />;
 }
 
 const container = document.getElementById('root');
@@ -29,17 +26,17 @@ root.render(<App />);
 console.log('app loaded!');
 
 registerMicroApps([
+  // {
+  //   name: 'aisha',
+  //   entry: '//localhost:3000',
+  //   container: '#reactSub',
+  //   activeRule: '/app-react',
+  // },
   {
-    name: 'aisha',
-    entry: '//localhost:3000',
-    container: '#reactSub',
-    activeRule: '/app-react',
-  },
-  {
-    name: 'clinical',
-    entry: '//localhost:8080',
+    name: 'vueSub',
+    entry: '//localhost:3005',
     container: '#vueSub',
-    activeRule: '/app-vue',
+    activeRule: '/vue',
   },
 ]);
 // 启动 qiankun

@@ -33,6 +33,7 @@ module.exports = merge(baseConfig, {
       {
         context: ['/api'],
         target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' },
       },
     ],
   },
